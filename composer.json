@@ -1,0 +1,15 @@
+{
+    "name": "vs2202/iwp",
+    "autoload": {
+        "psr-4": {
+            "app\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vs22202",
+            "email": "vishaal.s2020@vitstudent.ac.in"
+        }
+    ],
+    "require": {}
+}
