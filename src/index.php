@@ -9,7 +9,5 @@ $router->get('/', [HomeController::class, 'index']);
 $router->get('/login', [HomeController::class, 'login']);
 $router->get('/signup', [HomeController::class, 'signup']);
 $router->get('/gallery', [HomeController::class, 'gallery']);
-$router->get('/reviews', [HomeController::class, 'reviews']);
 $router->get('/error', [HomeController::class, 'error']);
 $router->resolve();
-

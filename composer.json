@@ -2,7 +2,7 @@
     "name": "vs2202/iwp",
     "autoload": {
         "psr-4": {
-            "Vs2202\\Iwp\\": "src/"
+            "app\\": "src/"
         }
     },
     "authors": [
