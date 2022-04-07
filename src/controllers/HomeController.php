@@ -27,4 +27,8 @@ class HomeController
     {
         $router->renderView('/error', []);
     }
+    public static function quiz(Router $router)
+    {
+        $router->renderView('/quiz', []);
+    }
 }

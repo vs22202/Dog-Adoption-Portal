@@ -10,4 +10,5 @@ $router->get('/login', [HomeController::class, 'login']);
 $router->get('/signup', [HomeController::class, 'signup']);
 $router->get('/gallery', [HomeController::class, 'gallery']);
 $router->get('/error', [HomeController::class, 'error']);
+$router->get('/quiz', [HomeController::class, 'quiz']);
 $router->resolve();

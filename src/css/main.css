@@ -1,0 +1,325 @@
+/*css reset*/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* setup*/
+:root{
+    --primary-color:254,174,174;
+    --primary-color-900:241,91,91;  
+    --secondary-color:0,0,0;
+    --tertiary-color:255,255,255;
+    --btn-padding:0.25em 1em;
+    --input-padding:0.25em 0.75em;
+    --border-radius-sm:10px;
+    --font-size-lg:36px;
+    --font-size-md:24px;
+    --font-size-sm:18px;
+    --font-size-xsm:14px;
+
+}
+body{
+    position: relative;
+    font-family: 'Playfair Display SC', serif;
+}
+body::before {
+	content: '';
+	background: url('../images/white-bg-svg.svg');
+	background-repeat: repeat;
+    background-attachment:scroll;   
+	height: 100vh;
+	position: absolute;
+	inset: 0 0 0 0;
+	z-index: -1;
+	filter: blur(0.4em);
+}
+/*layout */
+.inline{
+    display: inline;
+}
+.grid{
+    display:grid;
+}
+.grid-template-columns{
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+}
+.flex{
+    display:flex;
+}
+.flex-direction-column{
+    flex-direction: column;
+}
+.align-items-center{
+    align-items: center;
+}
+.align-items-start{
+    align-items: start;
+}
+.justify-content-center{
+    justify-content: center;
+}
+.justify-content-space-between{
+    justify-content: space-between;
+}
+.justify-content-space-evenly{
+    justify-content: space-evenly;
+}
+.justify-content-space-around{
+    justify-content: space-around;
+}
+.gap1{
+    gap:1em;
+}
+.gap2{
+    gap:2em;
+}
+.gap3_5{
+    gap:3.5em;
+}
+.row-gap-1{
+    row-gap: 1em;
+}
+.margin-bottom-1{
+    margin-bottom: 1em;
+}
+.margin-top-1{
+    margin-top: 1em;
+}
+.margin-inline-auto{
+    margin-inline:auto;
+}
+.margin-left-auto{
+    margin-left:auto;
+}
+.text-align-center{
+    text-align: center;
+}
+.font-size-lg{
+    font-size:var(--font-size-lg);
+}
+.font-size-md{
+    font-size:var(--font-size-md);
+}
+.font-size-sm{
+    font-size:var(--font-size-sm);
+}
+.font-size-xsm{
+    font-size:var(--font-size-xsm);
+}
+.font-color-primary-900{
+    color:rgba(var(--primary-color-900),1);
+}
+.font-color-tertiary{
+    color:rgba(var(--tertiary-color),1);
+}
+.font-family-quint{
+    font-family: 'Quintessential', cursive;   
+}
+.border-0{
+    border: 0!important;;
+}
+.width-100p{
+    width: 100%;
+}
+.width-75p{
+    width: 75%;
+}
+.width-50p{
+    width: 50%;
+}
+.width-25p{
+    width: 25%;
+}
+.width-15p{
+    width: 15%;
+}
+
+/*decor elements*/
+.decor-hr{
+    width: 50px;
+    height:1.5px; 
+    border:0;
+    margin:0;
+    background-color: rgba(var(--secondary-color),1);
+}
+.decor-h3{
+    transform: rotateZ(351deg);
+    font-family: 'Quintessential', cursive;     
+}
+.primary-900{
+    background-color: rgba(var(--primary-color-900),1);
+}
+.tertiary{
+    background-color: rgba(var(--tertiary-color),1);
+}
+/* elements */
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.landing{
+    margin-left: 15%;
+}
+.input{
+    border:1px solid black;
+    border-radius:var(--border-radius-sm);
+    padding: var(--input-padding); 
+}
+.input::placeholder{
+    font-family: 'Quintessential', cursive; 
+}
+.btn{
+    text-decoration: none;
+    padding: var(--btn-padding); 
+    border:1px solid rgba(var(--secondary-color),1);
+    border-radius: var(--border-radius-sm);
+    color:rgba(var(--secondary-color),1);
+    height:2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.select{
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    display: inline;
+    padding: 0 1em 0 0;
+    margin-left:0.25em;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+}
+.navbar{
+    list-style: none;
+    padding:0;
+    margin:0;   
+}
+.navbar>li>a{
+    display: inline;
+}
+.logo{
+    max-width: 100%;
+    width: 60px;
+}
+.login-form{
+    width:30%;  
+}
+/*card element */
+.card
+{
+width:70%;
+border-radius: 5px;
+background-color:#F2F2F2;
+font-family: 'Quintessential', cursive; 
+font-size:var(--font-size-xsm);
+}
+.card:hover
+{
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+.dex
+{
+ display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding: 10px 10px;
+  border-radius: 50%;}
+
+.card > .container {
+  padding: 0px;
+}
+.card > .container > h4
+{
+text-align :center;
+font-size: var(--font-size-md);
+}
+.card >.container >.description
+{
+text-align:center;
+padding:0.5em 1em;
+}
+.card >.container > .seemore
+{
+width:100%;
+color:#000000;
+padding: 2px 0px;
+background-color:#FF7878;
+text-align:center;
+font-size: var(--font-size-sm)
+}
+
+
