@@ -11,5 +11,7 @@
             "email": "vishaal.s2020@vitstudent.ac.in"
         }
     ],
-    "require": {}
+    "require": {
+        "mongodb/mongodb": "^1.12"
+    }
 }
