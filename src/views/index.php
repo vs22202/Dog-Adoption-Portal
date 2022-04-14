@@ -2,7 +2,7 @@
 ?>
 <div class='flex align-items-center justify-content-space-between'>
     <div class='landing flex flex-direction-column justify-content-center align-items-center gap1'>
-        <h2 class='font-size-lg decor-h3 margin-bottom-1'>
+        <h2 class='font-size-xxlg decor-h3 margin-bottom-1'>
             #Adopt Pure Love
         </h2>
         <h3 class='font-size-md'>Search to find your new friend</h3>
