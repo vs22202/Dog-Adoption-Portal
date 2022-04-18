@@ -1,6 +1,6 @@
 <div class='flex flex-direction-column align-items-center justify-content-space-around gap1'>
 <h3 class='text-align-center'>Login</h3>
-<form class='flex flex-direction-column align-items-start justify-content-space-around gap1 login-form margin-inline-auto'>
+<form class='flex flex-direction-column align-items-start justify-content-space-around gap1 login-form margin-inline-auto' method='post'>
     <div class='flex align-items-start justify-content-space-around width-100p'>
         <label for="user_email"><b>Email Address </b></label>    
         <input type='email' name='user_email' id='user_email' class='input font-size-xsm margin-left-auto' placeholder="enter your email here...">

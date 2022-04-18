@@ -14,11 +14,35 @@ class HomeController
     }
     public static function signup(Router $router)
     {
-
+        if ($_SERVER['REQUEST_METHOD']==='POST') {
+            $errors=[];
+            $data['user_email']=$_POST['user_email'];
+            $data['user_password']=$_POST['user_password'];
+            $data['user_confirm_password']=$_POST['user_confirm_password'];
+            if($data['user_confirm_password']!==$data['user_password']){
+                $errors[]='passwords don\'t match';
+            }
+            if(empty($errors)){
+                Database::$db->add_new_user($data);
+                header("Location: /");
+                exit;
+            }
+        }
         $router->renderView('/signup', []);
     }
     public static function login(Router $router)
     {
+        if ($_SERVER['REQUEST_METHOD']==='POST') {
+            $data['user_email']=$_POST['user_email'];
+            $data['user_password']=$_POST['user_password'];
+            $user=Database::$db->get_user($data);
+
+            if($user){
+                $_SESSION['user']=$user['user_email'];
+                header("Location: /");
+                exit;
+            }
+        }
         $router->renderView('/login', []);
     }
     public static function gallery(Router $router)
@@ -35,6 +59,17 @@ class HomeController
     }
     public static function adlogin(Router $router)
     {
+        if ($_SERVER['REQUEST_METHOD']==='POST') {
+            $data['admin_id']=$_POST['admin_id'];
+            $data['admin_password']=$_POST['admin_password'];
+            $adminUser=Database::$db->get_admin_user($data);
+
+            if($adminUser){
+                $_SESSION['aduser']=$adminUser['admin_id'];
+                header("Location: /create");
+                exit;
+            }
+        }
         $router->renderView('/CRUD/adlogin', []);
     }
     public static function create(Router $router)
@@ -49,7 +84,7 @@ class HomeController
             $dog->load($data);
             $errors=$dog->save();
             if (empty($errors)) {
-                header("Location: /products");
+                header("Location: /");
                 exit;
             }
         }
@@ -66,5 +101,16 @@ class HomeController
     public static function edit(Router $router)
     {
         $router->renderView('/CRUD/edit', []);
+    }
+    public static function getalldogdetails(Router $router)
+    {
+        $router->deliverJSON('/getalldogdetails');
+    }
+    public static function logout(Router $router)
+    {
+        session_unset();    
+        session_destroy();
+        header("Location: /");
+        exit;
     }
 }

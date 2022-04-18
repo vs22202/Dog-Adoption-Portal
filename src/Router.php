@@ -3,7 +3,8 @@
 namespace app;
 
 use app\controllers\HomeController;
-use app\Database;   
+use app\Database;
+use app\models\Dog;
 
 class Router
 {
@@ -45,5 +46,9 @@ class Router
         include_once __DIR__ . "/views$view.php";
         $content = ob_get_clean();  
         include_once __DIR__ . "/views/partials/_layout.php";
+    }
+    public function deliverJSON($route)
+    {
+        echo json_encode(iterator_to_array($this->db->get_all_dog_details()));
     }
 }
