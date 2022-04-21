@@ -11,6 +11,7 @@ class Dog
     public ?int $age= null;
     public ?string $imageFolderPath=null;
     public ?array $imagesFiles=null;
+    public ?string $uploadedBy=null;
 
     public function load($data)
     {
@@ -21,6 +22,7 @@ class Dog
         $this->age=$data['age'] ?? null;
         $this->imageFolderPath=$data['imageFolderPath'] ?? null;
         $this->imageFiles=$data['imageFiles'] ?? null;
+        $this->uploadedBy=$data['uploadedBy'] ?? null;
     }
     public function save()
     {

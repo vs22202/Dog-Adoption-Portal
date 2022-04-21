@@ -39,6 +39,7 @@ class Database{
         $details["age"]=$dog->age ?? null;
         $details["description"]=$dog->description ?? null;
         $details["imageFolderPath"]=$dog->imageFolderPath;
+        $details["uploadedBy"]=$dog->uploadedBy;
         $insertResult=$this->dog_details_collection->insertOne($details);
     }
     public function add_new_shelter($details){

@@ -6,14 +6,14 @@
             #Adopt Pure Love
         </h2>
         <h3 class='font-size-md'>Search to find your new friend</h3>
-        <form class='form gap1'> 
+        <form class='form gap1' action='/gallery'> 
             <input type='search' placeholder="i am looking for a.." name='search' class='input text-align-center font-size-sm'>
             <div class='inline input tertiary'>
             <i class="fa-solid fa-location-dot"></i>
-            <select class='select'>
+            <select class='select' name='location'>
                 <option>Near</option>
-                <option>Chennai</option>
-                <option>Vellore</option>
+                <option value='chennai'>Chennai</option>
+                <option value='vellore'>Vellore</option>
             </select>
             </div>
             <button type="submit" class='btn tertiary'><i class="fa fa-search"></i></button>

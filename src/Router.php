@@ -42,6 +42,9 @@ class Router
     }
     public function renderView($view, $params = [])
     {
+        foreach ($params as $key => $value) {
+            $$key = $value;
+        }
         ob_start();
         include_once __DIR__ . "/views$view.php";
         $content = ob_get_clean();  
@@ -50,5 +53,19 @@ class Router
     public function deliverJSON($route)
     {
         echo json_encode(iterator_to_array($this->db->get_all_dog_details()));
+    }
+    public function checkLocation($route,$location,$adminid)
+    {
+        $result=$this->db->get_admin_user(['admin_id'=>$adminid]);
+        // echo strtolower($result['shelter_address']);
+        // echo strtolower($location);
+        // echo str_contains(strtolower($result['shelter_address']),strtolower('dubai'));
+        // exit();
+        if(str_contains(strtolower($result['shelter_address']),strtolower($location)) || strtolower($location)=='near'){
+            echo json_encode(true);
+        }
+        else{
+            echo json_encode(false);
+        }
     }
 }
