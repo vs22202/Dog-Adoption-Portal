@@ -11,6 +11,7 @@ class Dog
     public ?int $age= null;
     public ?string $imageFolderPath=null;
     public ?array $imagesFiles=null;
+    public ?string $uploadedBy=null;
 
     public function load($data)
     {
@@ -21,6 +22,7 @@ class Dog
         $this->age=$data['age'] ?? null;
         $this->imageFolderPath=$data['imageFolderPath'] ?? null;
         $this->imageFiles=$data['imageFiles'] ?? null;
+        $this->uploadedBy=$data['uploadedBy'] ?? null;
     }
     public function save()
     {
@@ -34,23 +36,21 @@ class Dog
         if (!$this->age) {
             $errors[]='Dog needs a age';
         }
-        if (!is_dir(__DIR__.'/../../public/user_image_storage/')) {
-            echo __DIR__.'/../../public/user_image_storage/';
-            mkdir(__DIR__.'/../../public/user_image_storage/');
+        if (!is_dir(__DIR__.'/../public/user_image_storage/')) {
+            mkdir(__DIR__.'/../public/user_image_storage/');
         }
         if (empty($errors)) {
             if ($this->imageFiles && $this->imageFiles['tmp_name']) {
                 echo "here";
                 if ($this->imageFolderPath) {
-                    UtilHelper::deleteDir(__DIR__.'/../../public/user_image_storage/'.$this->imageFolderPath);
+                    unlink(__DIR__.'/../public/user_image_storage/'.$this->imageFolderPath);
                 }
                 $this->imageFolderPath=UtilHelper::randomString(8);
-                mkdir(__DIR__.'/../../public/user_image_storage/'.$this->imageFolderPath);
                 echo "here2";
                 $countfiles = count($this->imageFiles['name']);
                 for ($i=0;$i<$countfiles;$i++) {
                     $filename = $this->imageFiles['name'][$i];
-                    move_uploaded_file($this->imageFiles['tmp_name'][$i], __DIR__ . '/../../public/user_image_storage/'.$this->imageFolderPath.'/'.$i.'P'.$filename);
+                    move_uploaded_file($this->imageFiles['tmp_name'][$i], __DIR__ . '/../public/user_image_storage/'.$this->imageFolderPath.$i.'P'.'.jpeg');
                 }
             }
             $db = Database::$db;

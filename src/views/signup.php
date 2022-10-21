@@ -1,17 +1,17 @@
 <div class='flex flex-direction-column align-items-center justify-content-space-around gap1'>
 <h3 class='text-align-center'>Login</h3>
-<form class='flex flex-direction-column align-items-start justify-content-space-around gap1 login-form margin-inline-auto'>
+<form class='flex flex-direction-column align-items-start justify-content-space-around gap1 login-form margin-inline-auto' method='post'>
     <div class='flex align-items-start justify-content-space-around width-100p'>
         <label for="user_email">Email Address </label>    
-        <input type='email' name='user_email' id='user_email' class='input font-size-xsm margin-left-auto' placeholder="enter your email here...">
+        <input type='email' name='user_email' id='user_email' class='input font-size-xsm margin-left-auto' placeholder="enter your email here..." required>
     </div>
     <div class='flex align-items-start justify-content-space-around width-100p'>
         <label for="user_password">Password</label>    
-        <input type='password' name='user_password' id='user_password' class='input font-size-xsm margin-left-auto' placeholder="enter your password here...">
+        <input type='password' name='user_password' id='user_password' class='input font-size-xsm margin-left-auto' placeholder="enter your password here..." required>
     </div>  
     <div class='flex align-items-start justify-content-space-around width-100p'>
-        <label for="user_password">Confirm Password</label>    
-        <input type='password' name='user_confirm_password' id='user_confirm_password' class='input font-size-xsm margin-left-auto' placeholder="re-enter your password here...">
+        <label for="user_confirm_password">Confirm Password</label>    
+        <input type='password' name='user_confirm_password' id='user_confirm_password' class='input font-size-xsm margin-left-auto' placeholder="re-enter your password here..." required>
     </div>        
     <input type="submit" value='SignUp' class='btn primary-900 width-50p margin-inline-auto margin-top-1'> 
 </form>
