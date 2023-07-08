@@ -13,8 +13,9 @@ class Database{
     public  $shelter_details_collection;
     public function __construct()
     {
+        $db_password = getenv('DB_PASSWORD');
         $client = new Client(
-            'mongodb+srv://root:Vishaal123@cluster0.tgi3t.mongodb.net/Paws4Lyf?retryWrites=true&w=majority');
+            'mongodb+srv://sa:{$DB_PASSWORD}@vspersonalprojects.drvtcsr.mongodb.net/?retryWrites=true&w=majority');
         $dbClient = $client->test;
         $this->users_collection=$dbClient->users;
         $this->admin_users_collection=$dbClient->admin_users;
