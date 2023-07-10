@@ -1,29 +1,22 @@
-FROM richarvey/nginx-php-fpm:1.9.1
+FROM php:8.2-fpm-alpine
 
-COPY . .
+RUN apk update && apk add build-base
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends openssl libssl-dev libcurl4-openssl-dev \
-    && pecl install mongodb \
-    && cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
-    && echo "extension=mongodb.so" >> /usr/local/etc/php/php.ini \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-EXPOSE 80
+RUN pecl install mongodb && docker-php-ext-enable mongodb
 
-# Image config
-ENV SKIP_COMPOSER 1
-ENV WEBROOT /var/www/html/public
-ENV PHP_ERRORS_STDERR 1
-ENV RUN_SCRIPTS 1
-ENV REAL_IP_HEADER 1
+RUN apk add zlib-dev git zip \
+  && docker-php-ext-install zip
 
-# Laravel config
-ENV APP_ENV production
-ENV APP_DEBUG false
-ENV LOG_CHANNEL stderr
+RUN curl -sS https://getcomposer.org/installer | php \
+  && mv composer.phar /usr/local/bin/ \
+  && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
-# Allow composer to run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
+COPY . /app
+WORKDIR /app
 
-CMD ["/start.sh"]
+RUN composer install --prefer-source --no-interaction
+
+ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"
+
+
+
