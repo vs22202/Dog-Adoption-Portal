@@ -1,4 +1,4 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.2-cli
 
 RUN apk update && apk add build-base
 
