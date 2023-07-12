@@ -15,7 +15,7 @@ class Database{
     {
         $db_password = getenv('DB_PASSWORD');
         $client = new Client(
-            'mongodb+srv://sa:{$db_password}@vspersonalprojects.drvtcsr.mongodb.net/?retryWrites=true&w=majority');
+            'mongodb+srv://sa:TtKKXIPYMcwVUNOz@vspersonalprojects.drvtcsr.mongodb.net/?retryWrites=true&w=majority');
         $dbClient = $client->test;
         $this->users_collection=$dbClient->users;
         $this->admin_users_collection=$dbClient->admin_users;
